@@ -15,4 +15,15 @@ pipeline {
             }
         }
     }
+stage('Deploy') {
+    steps {
+        echo 'Deploying application to Staging environment...'
+    }
+}
+stage('Read Version') {
+    steps {
+        echo 'Application version:'
+        sh 'cat version.txt'
+    }
+}
 }
