@@ -8,22 +8,25 @@ pipeline {
                 sh 'ls -la'
             }
         }
+
         stage('Test App') {
             steps {
                 echo 'Simulating test execution on code pulled from Git...'
                 sh 'echo "Code tests passed successfully!"'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application to Staging environment...'
+            }
+        }
+
+        stage('Read Version') {
+            steps {
+                echo 'Application version:'
+                sh 'cat version.txt'
+            }
+        }
     }
-stage('Deploy') {
-    steps {
-        echo 'Deploying application to Staging environment...'
-    }
-}
-stage('Read Version') {
-    steps {
-        echo 'Application version:'
-        sh 'cat version.txt'
-    }
-}
 }
